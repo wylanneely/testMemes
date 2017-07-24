@@ -11,7 +11,7 @@ import UIKit
 class ShowMemesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
        //ADD POPVIEWCONTROLLER
     @IBAction func backButtonTapped(_ sender: Any) {
-        
+        self.navigationController?.popViewController(animated: true)
     }
 
     
@@ -29,16 +29,5 @@ class ShowMemesViewController: UIViewController, UICollectionViewDataSource, UIC
         
         return cell
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

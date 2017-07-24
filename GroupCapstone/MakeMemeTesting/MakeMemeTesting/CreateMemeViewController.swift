@@ -30,10 +30,16 @@ class CreateMemeViewController: UIViewController, MemeImageSelectedDelegate, UIC
     }
 
     override func viewDidLoad() {
-        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    func dismissKeyboard() {
+        view.endEditing(true)
+        self.firstTextLabel.text = self.firstTextField.text
+        self.secondTextLabel.text = self.secondTextFiled.text
     }
     
     @IBOutlet weak var collectionView: UICollectionView!

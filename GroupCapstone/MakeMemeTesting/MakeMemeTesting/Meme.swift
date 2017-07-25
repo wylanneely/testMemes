@@ -7,18 +7,62 @@
 //
 
 import UIKit
+import CloudKit
 
 class Meme {
+    //MARK: - CloudKit Keys
+    static let cKRecordTypeKey = "Meme"
     
-    let image: UIImage
+    private let kImageData = "ImageData"
+    private let kFirstText = "firstText"
+    private let kSecondText = "secondText"
+    
+    var cloudKitRecord: CKRecord {
+        
+        let record = CKRecord(recordType: Meme.cKRecordTypeKey)
+        
+        record.setValue(imageData, forKey: kImageData)
+        record.setValue(firstText, forKey: kFirstText)
+        record.setValue(secondText, forKey: kSecondText)
+        
+        return record
+    }
+    
+    
+    let image: UIImage?
+    let imageData: Data
     var firstText: String
     var secondText: String
     
-    init(image: UIImage, firstText: String, secondText: String ) {
-        self.image = image
+    init(imageData: Data, firstText: String, secondText: String ) {
+        self.imageData = imageData
         self.firstText = firstText
         self.secondText = secondText
+        
+        self.image = UIImage(data: imageData)
+        
     }
     
+    
+    init?(cloudKitRecord: CKRecord){
+        
+        guard let imageData = cloudKitRecord[kImageData] as? Data,
+        let firstText = cloudKitRecord[kFirstText] as? String,
+            let secondText = cloudKitRecord[kSecondText] as? String
+        else { return nil }
+        
+       
+        
+        
+        //FIX
+            self.imageData = imageData
+            self.firstText = firstText
+            self.secondText = secondText
+        self.image = UIImage(data: imageData)
+        
+        
+        
+        
+    }
     
 }

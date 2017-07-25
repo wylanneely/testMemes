@@ -11,6 +11,7 @@
 		B23927BD1F26584C001EB23E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23927BB1F26584C001EB23E /* Main.storyboard */; };
 		B23927BF1F26584C001EB23E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B23927BE1F26584C001EB23E /* Assets.xcassets */; };
 		B23927C21F26584C001EB23E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23927C01F26584C001EB23E /* LaunchScreen.storyboard */; };
+		B2DD05981F2695D400BA97B6 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2DD05971F2695D400BA97B6 /* CloudKit.framework */; };
 		B2FAA39B1F265D50009D5579 /* CreateMemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FAA39A1F265D50009D5579 /* CreateMemeViewController.swift */; };
 		B2FAA39D1F265D97009D5579 /* ShowMemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FAA39C1F265D97009D5579 /* ShowMemesViewController.swift */; };
 		B2FAA39F1F265DAF009D5579 /* StoredImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FAA39E1F265DAF009D5579 /* StoredImages.swift */; };
@@ -27,6 +28,8 @@
 		B23927BE1F26584C001EB23E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B23927C11F26584C001EB23E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B23927C31F26584C001EB23E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2DD05951F2695CC00BA97B6 /* MakeMemeTesting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MakeMemeTesting.entitlements; sourceTree = "<group>"; };
+		B2DD05971F2695D400BA97B6 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B2FAA39A1F265D50009D5579 /* CreateMemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMemeViewController.swift; sourceTree = "<group>"; };
 		B2FAA39C1F265D97009D5579 /* ShowMemesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowMemesViewController.swift; sourceTree = "<group>"; };
 		B2FAA39E1F265DAF009D5579 /* StoredImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredImages.swift; sourceTree = "<group>"; };
@@ -41,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2DD05981F2695D400BA97B6 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +56,7 @@
 			children = (
 				B23927B61F26584C001EB23E /* MakeMemeTesting */,
 				B23927B51F26584C001EB23E /* Products */,
+				B2DD05961F2695D400BA97B6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,12 +71,13 @@
 		B23927B61F26584C001EB23E /* MakeMemeTesting */ = {
 			isa = PBXGroup;
 			children = (
+				B2DD05951F2695CC00BA97B6 /* MakeMemeTesting.entitlements */,
 				B23927BB1F26584C001EB23E /* Main.storyboard */,
+				B23927B71F26584C001EB23E /* AppDelegate.swift */,
 				B2FAA3A41F2666D0009D5579 /* Views */,
 				B23927CB1F265871001EB23E /* ViewControllers */,
 				B23927CA1F265863001EB23E /* Controllers */,
 				B23927C91F265859001EB23E /* Models */,
-				B23927B71F26584C001EB23E /* AppDelegate.swift */,
 				B23927BE1F26584C001EB23E /* Assets.xcassets */,
 				B23927C01F26584C001EB23E /* LaunchScreen.storyboard */,
 				B23927C31F26584C001EB23E /* Info.plist */,
@@ -103,6 +109,14 @@
 				B2FAA39C1F265D97009D5579 /* ShowMemesViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B2DD05961F2695D400BA97B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B2DD05971F2695D400BA97B6 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B2FAA3A41F2666D0009D5579 /* Views */ = {
@@ -148,6 +162,17 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = L4J4QU6QE4;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -317,6 +342,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MakeMemeTesting/MakeMemeTesting.entitlements;
 				DEVELOPMENT_TEAM = L4J4QU6QE4;
 				INFOPLIST_FILE = MakeMemeTesting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -330,6 +356,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MakeMemeTesting/MakeMemeTesting.entitlements;
 				DEVELOPMENT_TEAM = L4J4QU6QE4;
 				INFOPLIST_FILE = MakeMemeTesting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

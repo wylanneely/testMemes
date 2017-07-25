@@ -9,6 +9,16 @@
 import UIKit
 
 class ShowMemesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        MemeController.shared.fetchMemesFromCLoudKit {
+            self.collectionView.reloadData()
+        }
+    }
+
+    @IBOutlet weak var collectionView: UICollectionView!
+    
        //ADD POPVIEWCONTROLLER
     @IBAction func backButtonTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -21,6 +31,7 @@ class ShowMemesViewController: UIViewController, UICollectionViewDataSource, UIC
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memeCell", for: indexPath) as? MemeCollectionViewCell else { return UICollectionViewCell()}
+        
         let meme =  MemeController.shared.memes[indexPath.row]
 
         cell.memeImageView.image = meme.image
@@ -28,6 +39,9 @@ class ShowMemesViewController: UIViewController, UICollectionViewDataSource, UIC
         cell.secondTextLabel.text = meme.secondText
         
         return cell
+    }
+    @IBAction func reloadButtonTapped(_ sender: Any) {
+        self.collectionView.reloadData()
     }
 
 }

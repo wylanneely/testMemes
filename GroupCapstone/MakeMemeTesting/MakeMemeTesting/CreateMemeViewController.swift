@@ -10,14 +10,15 @@ import UIKit
 
 class CreateMemeViewController: UIViewController, MemeImageSelectedDelegate, UICollectionViewDataSource, UICollectionViewDelegate  {
     
+    var memeController = MemeController()
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return 6
+       return StoredImages.images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memeImageCell", for: indexPath) as? MemeImagesCollectionViewCell else { return UICollectionViewCell()}
         cell.delegate = self
-        
         let image = StoredImages.images[indexPath.row]
         cell.image.image = image
         
@@ -54,10 +55,12 @@ class CreateMemeViewController: UIViewController, MemeImageSelectedDelegate, UIC
        guard let firstText = firstTextField.text,
         let secondText = secondTextFiled.text,
         let image = memeImageView.image else {return}
-        
-        MemeController.shared.createAndSaveMemeWith(image: image, firstText: firstText, secondText: secondText)
-        
+                
+        MemeController.shared.createMeme(image: image, firstText: firstText, secondText: secondText)
+  
     }
+    
+    
     
 
 }
